@@ -13,9 +13,8 @@ import static com.jogamp.opengl.fixedfunc.GLMatrixFunc.GL_PROJECTION;
 import static com.jogamp.opengl.util.ImmModeSink.GL_QUADS;
 
 public class Renderer implements GLEventListener {
-    public static GL2 gl = null;
 
-    public float zoom = 0.0f;
+    public static GL2 gl = null;
 
     public float mouseX = 0.0f;
     public float mouseY = 0.0f;
@@ -31,15 +30,32 @@ public class Renderer implements GLEventListener {
     }
 
     @Override
-    public void display(GLAutoDrawable drawable) {
-        gl = drawable.getGL().getGL2();
+    public void display(GLAutoDrawable drawable)  {
         gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         gl.glMatrixMode(GL_PROJECTION);
         gl.glLoadIdentity();
+        createFigure();
+        gl.glRotatef(45, 1, 0, 0);
+        gl.glRotatef(45, 0, 1, 0);
+    }
 
-        gl.glDisable(GL_BLEND);
+    @Override
+    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+        if (height <= 0) {
+            height = 1;
+        }
+        gl.glViewport(0, 0,  width,  height);
+        gl.glMatrixMode(GL_PROJECTION);
+        gl.glLoadIdentity();
+        gl.glMatrixMode(GL_MODELVIEW);
+    }
+
+    @Override
+    public void dispose(GLAutoDrawable drawable) {
+    }
+
+    private void createFigure() {
         gl.glBegin(GL_QUADS);
-
         gl.glColor3f(1.0f, 1.0f, 0.0f);
 
         gl.glVertex3f(-0.2f, -0.25f, 0.0f);
@@ -158,27 +174,5 @@ public class Renderer implements GLEventListener {
         gl.glVertex3f(-0.1f, -0.15f, -0.2f);
         gl.glVertex3f(-0.2f, -0.15f, -0.2f);
         gl.glEnd();
-    }
-
-    @Override
-    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-        gl = drawable.getGL().getGL2();
-        if (height <= 0) {
-            height = 1;
-        }
-        gl.glViewport(0, 0,  width,  height);
-        gl.glMatrixMode(GL_PROJECTION);
-        gl.glLoadIdentity();
-        gl.glMatrixMode(GL_MODELVIEW);
-    }
-
-    @Override
-    public void dispose(GLAutoDrawable drawable) {
-
-    }
-
-    public void update() {
-        gl.glScalef(zoom, zoom, zoom);
-        display((GLAutoDrawable) gl);
     }
 }

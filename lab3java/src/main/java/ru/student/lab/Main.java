@@ -8,61 +8,23 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
 
+
 public class Main {
-    private static GLWindow window = null;
 
     public static void main(String[] args) {
         GLProfile.initSingleton();
         GLProfile profile = GLProfile.get(GLProfile.GL2);
         GLCapabilities caps = new GLCapabilities(profile);
 
-        window = GLWindow.create(caps);
-        window.setSize(640,480);
+        GLWindow window = GLWindow.create(caps);
+        window.setSize(640, 480);
         window.setResizable(true);
-        window.addGLEventListener(new Renderer());
-        window.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseMoved(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseWheelMoved(MouseEvent e) {
-
-            }
-        });
+        Renderer renderer = new Renderer();
+        window.addGLEventListener(renderer);
+        window.addMouseListener(new MouseListener());
         FPSAnimator animator = new FPSAnimator(window, 60);
         animator.start();
         window.setVisible(true);
     }
+
 }
