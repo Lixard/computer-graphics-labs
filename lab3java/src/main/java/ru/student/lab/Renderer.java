@@ -16,11 +16,11 @@ public class Renderer implements GLEventListener {
 
     public float xRotationAngle = 0;
     public float yRotationAngle = 0;
-//    public float zRotationAngle = 0;
 
     @Override
     public void init(GLAutoDrawable drawable) {
         gl = drawable.getGL().getGL2();
+        gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     }
 
     @Override
@@ -28,7 +28,6 @@ public class Renderer implements GLEventListener {
         gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         gl.glRotatef(xRotationAngle / 20, 1.0f, 0.0f, 0.0f);
         gl.glRotatef(yRotationAngle / 20, 0.0f, 1.0f, 0.0f);
-//        gl.glRotatef(zRotationAngle / 20, 0.0f, 0.0f, 1.0f);
         createFigure();
     }
 
@@ -49,7 +48,7 @@ public class Renderer implements GLEventListener {
 
     private void createFigure() {
         gl.glBegin(GL_QUADS);
-        gl.glColor3f(1.0f, 1.0f, 0.0f);
+        gl.glColor3f(0.0f, 1.0f, 1.0f);
 
         gl.glVertex3f(-0.2f, -0.25f, 0.0f);
         gl.glVertex3f(-0.2f, 0.25f, 0.0f);
@@ -60,7 +59,6 @@ public class Renderer implements GLEventListener {
         gl.glVertex3f(0.2f, 0.25f, 0.1f);
         gl.glVertex3f(0.2f, -0.25f, 0.1f);
 
-        gl.glColor3f(1.0f, 1.0f, 0.2f);
         gl.glVertex3f(-0.2f, -0.25f, 0.1f);
         gl.glVertex3f(-0.2f, 0.25f, 0.1f);
         gl.glVertex3f(-0.2f, 0.25f, 0.0f);
@@ -71,19 +69,15 @@ public class Renderer implements GLEventListener {
         gl.glVertex3f(0.2f, 0.25f, 0.0f);
         gl.glVertex3f(0.2f, -0.25f, 0.0f);
 
-        gl.glColor3f(1.0f, 1.0f, 0.2f);
         gl.glVertex3f(-0.2f, 0.25f, 0.0f);
         gl.glVertex3f(0.2f, 0.25f, 0.0f);
         gl.glVertex3f(0.2f, 0.25f, 0.1f);
         gl.glVertex3f(-0.2f, 0.25f, 0.1f);
 
-
         gl.glVertex3f(0.2f, -0.25f, 0.0f);
         gl.glVertex3f(-0.2f, -0.25f, 0.0f);
         gl.glVertex3f(-0.2f, -0.25f, 0.1f);
         gl.glVertex3f(0.2f, -0.25f, 0.1f);
-
-        gl.glColor3f(1.0f, 0.5f, 0.0f);
 
         gl.glVertex3f(0.2f, -0.25f, 0.0f);
         gl.glVertex3f(-0.2f, -0.25f, 0.0f);
@@ -95,8 +89,6 @@ public class Renderer implements GLEventListener {
         gl.glVertex3f(-0.2f, -0.15f, -0.1f);
         gl.glVertex3f(0.2f, -0.15f, -0.1f);
 
-        gl.glColor3f(1.0f, 0.6f, 0.0f);
-
         gl.glVertex3f(0.2f, -0.25f, -0.1f);
         gl.glVertex3f(0.2f, -0.15f, -0.1f);
         gl.glVertex3f(0.2f, -0.15f, 0.0f);
@@ -106,16 +98,15 @@ public class Renderer implements GLEventListener {
         gl.glVertex3f(-0.2f, -0.15f, -0.1f);
         gl.glVertex3f(-0.2f, -0.15f, 0.0f);
         gl.glVertex3f(-0.2f, -0.25f, 0.0f);
+
+
+        gl.glVertex3f(0.2f, -0.25f, -0.1f);
+        gl.glVertex3f(-0.2f, -0.25f, -0.1f);
+        gl.glVertex3f(-0.2f, -0.15f, -0.1f);
+        gl.glVertex3f(0.2f, -0.15f, -0.1f);
+
 
         gl.glColor3f(1.0f, 0.5f, 0.2f);
-
-        gl.glVertex3f(0.2f, -0.25f, -0.1f);
-        gl.glVertex3f(-0.2f, -0.25f, -0.1f);
-        gl.glVertex3f(-0.2f, -0.15f, -0.1f);
-        gl.glVertex3f(0.2f, -0.15f, -0.1f);
-
-        gl.glColor3f(0.0f, 1.0f, 0.0f);
-
         gl.glVertex3f(0.2f, -0.25f, -0.2f);
         gl.glVertex3f(0.2f, -0.15f, -0.2f);
         gl.glVertex3f(0.2f, -0.15f, -0.1f);
