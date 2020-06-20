@@ -1,8 +1,6 @@
 package ru.student.lab;
 
 
-import com.jogamp.newt.event.MouseEvent;
-import com.jogamp.newt.event.MouseListener;
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
@@ -21,7 +19,7 @@ public class Main {
         window.setResizable(true);
         Renderer renderer = new Renderer();
         window.addGLEventListener(renderer);
-        window.addMouseListener(new MouseListener());
+        window.addMouseListener(new MouseListenerImpl());
         FPSAnimator animator = new FPSAnimator(window, 60);
         animator.start();
         window.setVisible(true);

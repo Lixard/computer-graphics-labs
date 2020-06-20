@@ -5,8 +5,8 @@ import com.jogamp.newt.event.MouseListener;
 
 public class MouseListenerImpl implements MouseListener {
 
-    public float mouseX = 0;
-    public float mouseY = 0;
+    public float mouseStartX = 0;
+    public float mouseStartY = 0;
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -25,12 +25,12 @@ public class MouseListenerImpl implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        e.get
+        mouseStartX = e.getX();
+        mouseStartY = e.getY();
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
     }
 
     @Override
@@ -41,6 +41,7 @@ public class MouseListenerImpl implements MouseListener {
     @Override
     public void mouseDragged(MouseEvent e) {
 
+        System.out.println();
     }
 
     @Override
