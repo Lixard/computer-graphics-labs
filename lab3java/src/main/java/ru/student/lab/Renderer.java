@@ -6,8 +6,6 @@ import com.jogamp.opengl.GLEventListener;
 
 
 import static com.jogamp.opengl.GL.*;
-import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHT0;
-import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHTING;
 import static com.jogamp.opengl.fixedfunc.GLMatrixFunc.GL_MODELVIEW;
 import static com.jogamp.opengl.fixedfunc.GLMatrixFunc.GL_PROJECTION;
 import static com.jogamp.opengl.util.ImmModeSink.GL_QUADS;
@@ -16,27 +14,22 @@ public class Renderer implements GLEventListener {
 
     public static GL2 gl = null;
 
-    public float mouseX = 0.0f;
-    public float mouseY = 0.0f;
-    public float mouseZ = 0.0f;
+    public float xRotationAngle = 0;
+    public float yRotationAngle = 0;
+//    public float zRotationAngle = 0;
 
     @Override
     public void init(GLAutoDrawable drawable) {
         gl = drawable.getGL().getGL2();
-        gl.glClearColor(0,0,0,1);
-        gl.glEnable(GL_DEPTH_TEST);
-        gl.glEnable(GL_LIGHT0);
-        gl.glEnable(GL_LIGHTING);
     }
 
     @Override
-    public void display(GLAutoDrawable drawable)  {
+    public void display(GLAutoDrawable drawable) {
         gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        gl.glMatrixMode(GL_PROJECTION);
-        gl.glLoadIdentity();
+        gl.glRotatef(xRotationAngle / 20, 1.0f, 0.0f, 0.0f);
+        gl.glRotatef(yRotationAngle / 20, 0.0f, 1.0f, 0.0f);
+//        gl.glRotatef(zRotationAngle / 20, 0.0f, 0.0f, 1.0f);
         createFigure();
-        gl.glRotatef(45, 1, 0, 0);
-        gl.glRotatef(45, 0, 1, 0);
     }
 
     @Override
@@ -44,7 +37,7 @@ public class Renderer implements GLEventListener {
         if (height <= 0) {
             height = 1;
         }
-        gl.glViewport(0, 0,  width,  height);
+        gl.glViewport(0, 0, width, height);
         gl.glMatrixMode(GL_PROJECTION);
         gl.glLoadIdentity();
         gl.glMatrixMode(GL_MODELVIEW);

@@ -19,7 +19,7 @@ public class Main {
         window.setResizable(true);
         Renderer renderer = new Renderer();
         window.addGLEventListener(renderer);
-        window.addMouseListener(new MouseListenerImpl());
+        window.addMouseListener(new RotationMouseListener(renderer));
         FPSAnimator animator = new FPSAnimator(window, 60);
         animator.start();
         window.setVisible(true);
