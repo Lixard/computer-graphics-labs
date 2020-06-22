@@ -47,7 +47,7 @@ public class RotationAndZoomMouseListener implements MouseListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
+        renderer.zoomScale = 1.0f;
     }
 
     @Override
@@ -62,11 +62,10 @@ public class RotationAndZoomMouseListener implements MouseListener {
 
     @Override
     public void mouseWheelMoved(MouseEvent e) {
-        System.out.println(e.getRotation()[1]);
-        if (e.getRotation()[1] >= 1.0f) {
-            renderer.zoomScale *= 1.1f;
-        } else {
-            renderer.zoomScale /= 1.1f;
+        if (e.getRotation()[1] > 0) {
+            renderer.zoomScale += 0.1f;
+        } else if (e.getRotation()[1] < 0) {
+            renderer.zoomScale -= 0.1f;
         }
     }
 }

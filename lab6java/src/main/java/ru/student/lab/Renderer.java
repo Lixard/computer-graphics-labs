@@ -28,6 +28,7 @@ public class Renderer implements GLEventListener {
         gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         gl.glRotatef(xRotationAngle / 20, 1.0f, 0.0f, 0.0f);
         gl.glRotatef(yRotationAngle / 20, 0.0f, 1.0f, 0.0f);
+        gl.glScalef(zoomScale, zoomScale, zoomScale);
         for (float y = -480; y < 480; y += 10)
         {
             gl.glBegin(GL_LINE_STRIP);
@@ -39,7 +40,6 @@ public class Renderer implements GLEventListener {
             }
             gl.glEnd();
         }
-        gl.glScalef(zoomScale, zoomScale, zoomScale);
     }
 
     @Override
