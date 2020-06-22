@@ -41,13 +41,11 @@ public class RotationAndZoomMouseListener implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         hasRotationStarted = false;
-        renderer.xRotationAngle = 0;
-        renderer.yRotationAngle = 0;
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        renderer.zoomScale = 1.0f;
+
     }
 
     @Override

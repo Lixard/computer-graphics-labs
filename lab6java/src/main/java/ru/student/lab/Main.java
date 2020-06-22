@@ -12,7 +12,7 @@ public class Main {
         GLCapabilities caps = new GLCapabilities(profile);
 
         GLWindow window = GLWindow.create(caps);
-        window.setSize(640, 480);
+        window.setSize(800, 600);
         Renderer renderer = new Renderer();
         window.addGLEventListener(renderer);
         window.addMouseListener(new RotationAndZoomMouseListener(renderer));
